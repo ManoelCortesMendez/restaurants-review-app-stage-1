@@ -91,7 +91,6 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
 }
 
 /* Display list items side by side */
@@ -212,29 +211,43 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Details ====================== */
+.inside body {
+	display: grid;
+	grid-template-area:
+	"header"
+	"main"
+	"footer";
+}
 .inside header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+	grid-area: header;
+}
+
+.inside #maincontent {
+	grid-area: main;
+	display: grid;
+	grid-template-areas:
+	"restinfo"
+	"restmap"
+	"restreviews";
 }
 .inside #map-container {
   background: blue none repeat scroll 0 0;
-  height: 87%;
-  position: fixed;
-  right: 0;
-  top: 80px;
-  width: 50%;
+	grid-area: restmap;
+	height: 300px;
 }
 .inside #map {
-  background-color: #ccc;
-  height: 100%;
-  width: 100%;
+	background-color: #ccc;
+	height: 100%;
+	width: 100%;
+}
+.inside #restaurant-container {
+	grid-area: restinfo;
+}
+.inside #reviews-container {
+	grid-area: restreviews;
 }
 .inside #footer {
-  bottom: 0;
-  position: absolute;
-  width: 50%;
+	grid-area: footer;
 }
 #restaurant-name {
   color: #f18200;
@@ -247,7 +260,7 @@ nav h1 a {
   line-height: 1.1;
 }
 #restaurant-img {
-	width: 90%;
+	width: 100%;
 }
 #restaurant-address {
   font-size: 12pt;
@@ -263,16 +276,11 @@ nav h1 a {
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
-	width: 90%;
 }
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
-  width: 50%;
-}
-#reviews-container {
-  padding: 30px 40px 80px;
+	padding: 24px;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -287,18 +295,36 @@ nav h1 a {
 }
 #reviews-list li {
   background-color: #fff;
-    border: 2px solid #f3f3f3;
+  border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
   margin: 0 0 30px;
   overflow: hidden;
-  padding: 0 20px 20px;
-  position: relative;
-  width: 85%;
+  padding: 20px 20px;
 }
 #reviews-list li p {
   margin: 0 0 10px;
 }
 #restaurant-hours td {
   color: #666;
+}
+
+/*Media query*/
+
+@media screen and (min-width: 700px) {
+	.inside #maincontent {
+		grid-area: main;
+		display: grid;
+		grid-template-columns: 50% 50%;
+		grid-template-areas:
+		"restinfo restmap"
+		"restreviews restreviews";
+	}
+
+	.inside #map-container {
+	  background: blue none repeat scroll 0 0;
+		grid-area: restmap;
+		margin: 24px 24px 0 0;
+		height: auto;
+	}
 }
