@@ -1,8 +1,10 @@
 // Offline-first: Register service worker
-if (navigator.serviceWorker) {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
-    .then(() => console.log('Registration successful'))
-    .catch(() => console.log('Registration failed'));
+    .then(() => console.log('Service worker registration successful.'))
+    .catch(() => console.log('Service worker registration failed.'));
+} else {
+  console.log('Service worker is not supported.');
 };
 
 let restaurants,
