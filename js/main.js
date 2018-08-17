@@ -1,3 +1,10 @@
+// Offline-first: Register service worker
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('sw.js')
+    .then(() => console.log('Registration successful'))
+    .catch(() => console.log('Registration failed'));
+};
+
 let restaurants,
   neighborhoods,
   cuisines
