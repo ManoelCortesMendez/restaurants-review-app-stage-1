@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <!-- Responsive: set viewport meta tag to allow responsive layouts at all screen sizes. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <link rel="stylesheet" href="css/styles.css">
@@ -10,17 +11,23 @@
 </head>
 
 <body>
+  <!-- Accessibility: skip links allow to go straight to the important content. -->
+  <a href="#neighborhoods-select" class="skip-link">To skip to the restaurant filters, press Enter.</a>
+  <a href="#restaurants-list" class="skip-link">To skip to the restaurants list, press Enter.</a>
+
   <header>
     <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+      <!-- Accessibility: aria-label allows label elements to make their purpose more explicit. -->
+      <h1><a href="/" aria-label="Reload homepage">Restaurant Reviews</a></h1>
     </nav>
   </header>
 
   <main id="maincontent">
-    <section id="map-container">
-      <div id="map"></div>
+    <!-- Accessibility: aria roles allows to nuance the semantic meaning of elements. -->
+    <section id="map-container" role="complementary">
+      <div id="map" aria-label="Map of New-York restaurants"></div>
     </section>
-    <section>
+    <section aria-label="Restaurant filters">
       <div class="filter-options">
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
@@ -36,7 +43,6 @@
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
   <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap"></script> -->
-
 
   <footer id="footer">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.

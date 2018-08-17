@@ -157,13 +157,18 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
+  // Accessibility: aria-label allows label elements to make their purpose more explicit.
+  li.setAttribute('aria-label', 'Restaurant info')
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
+  // Accessibility: images should be described using the alt attribute.
+  image.alt = restaurant.name + ' restaurant.';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
   const name = document.createElement('h1');
+  // Accessibility: images should be described using the alt attribute.
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -178,6 +183,9 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  // Accessibility: aria roles allows to nuance the semantic meaning of elements.
+  more.setAttribute('role', 'button');
+  more.setAttribute('aria-label', 'Go to restaurant\'s details page.');
   li.append(more)
 
   return li

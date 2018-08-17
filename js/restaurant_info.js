@@ -82,12 +82,14 @@ fetchRestaurantFromURL = (callback) => {
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
+  name.tabIndex = 0;
 
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  image.alt = restaurant.name + ' restaurant.';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -108,6 +110,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
   const hours = document.getElementById('restaurant-hours');
   for (let key in operatingHours) {
     const row = document.createElement('tr');
+    row.tabIndex = 0;
 
     const day = document.createElement('td');
     day.innerHTML = key;
@@ -148,6 +151,11 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
+  // Accessibility: tab index adds elements to the a11y tree -> to allow to tab through them.
+  li.tabIndex = 0;
+  // Accessibility: aria-label allows label elements to make their purpose more explicit.
+  li.setAttribute('aria-label', 'Customer review');
+
   const name = document.createElement('p');
   name.innerHTML = review.name;
   li.appendChild(name);

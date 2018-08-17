@@ -17,6 +17,7 @@ body {
 	background-color: #fdfdfd;
 	margin: 0;
 	position:relative;
+	/*Responsive: CSS grid layout allows to build flexible, responsive designs.*/
 	display: grid;
 	max-width: 1600px;
 	grid-template-areas:
@@ -127,6 +128,7 @@ nav h1 a {
 	padding: 8px;
   background-color: #3397DB;
   align-items: center;
+	/*Responsive: CSS flex-box allows to dynamically adjust the number of elements per row.*/
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
@@ -309,7 +311,21 @@ nav h1 a {
   color: #666;
 }
 
-/*Media query*/
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 0;
+	background: #BF1722;
+	color: white;
+	padding: 8px;
+	z-index: 100;
+}
+
+.skip-link:focus {
+	top: 0;
+}
+
+/*Responsive: the media query allows to use differents layours at different screen sizes.*/
 
 @media screen and (min-width: 700px) {
 	.inside #maincontent {
