@@ -1,5 +1,7 @@
 // Offline-first: Cache assets on service worker install.
 self.addEventListener('install', event => {
+
+  // URLs of assets that should be cached.
   const urlsToCache = [
     '/',
     'css/styles.css',
@@ -21,9 +23,11 @@ self.addEventListener('install', event => {
     'restaurant.html'
   ];
 
+  // Name of our cache.
   const cacheName = 'restaurant-reviews-static-v1';
 
   event.waitUntil(
+    // Add all URL-response pairs to cache.
     caches.open(cacheName)
     .then(cache => cache.addAll(urlsToCache))
   );
@@ -31,6 +35,7 @@ self.addEventListener('install', event => {
 
 // Offline-first: Respond to requests with cached assets.
 self.addEventListener('fetch', event => event.respondWith(
+  // If asset requested exists in cache, serve from cache.
   caches.match(event.request)
     .then(response => response || fetch(event.request))
 ));
