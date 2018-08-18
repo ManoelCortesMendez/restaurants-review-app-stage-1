@@ -176,7 +176,8 @@ createRestaurantHTML = (restaurant) => {
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
-  const name = document.createElement('h1');
+  //Accessibility: headings of different importance have different levels: ie h1 vs. h2.
+  const name = document.createElement('h2');
   // Accessibility: images should be described using the alt attribute.
   name.innerHTML = restaurant.name;
   li.append(name);

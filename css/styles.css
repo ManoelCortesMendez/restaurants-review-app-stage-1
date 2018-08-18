@@ -211,6 +211,11 @@ nav h1 a {
   text-decoration: none;
   text-transform: uppercase;
 }
+/*Accessibility: headings of different importance have different levels: ie h1 vs. h2.*/
+#restaurants-list h2 {
+	margin-top: 8px;
+	color: orange;
+}
 
 /* ====================== Restaurant Details ====================== */
 .inside body {
@@ -284,7 +289,8 @@ nav h1 a {
   border-top: 1px solid #fff;
 	padding: 24px;
 }
-#reviews-container h2 {
+/*Accessibility: headings of different importance have different levels: ie h2 vs. h3.*/
+#reviews-container h3 {
   color: #f58500;
   font-size: 24pt;
   font-weight: 300;
