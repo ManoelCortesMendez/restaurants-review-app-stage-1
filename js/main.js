@@ -195,7 +195,8 @@ createRestaurantHTML = (restaurant) => {
   more.href = DBHelper.urlForRestaurant(restaurant);
   // Accessibility: aria roles allows to nuance the semantic meaning of elements.
   more.setAttribute('role', 'button');
-  more.setAttribute('aria-label', 'Go to restaurant\'s details page.');
+  // Accessibility: each restaurant now has a unique aria-label.
+  more.setAttribute('aria-label', 'Go to restaurant ' + restaurant.name + ' details page.');
   li.append(more)
 
   return li

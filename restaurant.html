@@ -23,11 +23,14 @@
     <nav>
       <!-- Accessibility: aria-label allows label elements to make their purpose more explicit. -->
       <h1><a href="/" aria-label="Return to homepage">Restaurant Reviews</a></h1>
+      <!-- Accessibility: nav tags denote a navigation element. -->
+      <ul id="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="/">Home</a></li>
+      </ul>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" aria-label="Breadcrumb">
-      <li><a href="/">Home</a></li>
-    </ul>
+    <!-- Accessibility: aria-label 'Breadcrumb' denotes breadcrumb on restaurant's website. -->
+
     <!-- End breadcrumb -->
     <!-- End nav -->
   </header>
@@ -38,7 +41,7 @@
     <!-- Beginning map -->
     <section id="map-container">
       <!-- Accessibility: aria roles allows to nuance the semantic meaning of elements. -->
-      <div id="map" role="complementary"></div>
+      <div id="map" role="application"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
